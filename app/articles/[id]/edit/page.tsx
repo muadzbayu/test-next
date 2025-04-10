@@ -13,9 +13,9 @@ export default function EditArticlePage() {
     if (typeof id === 'string') {
       fetchArticleById(id).then((data) => {
         setForm({
-          title: data.title || '',
-          content: data.content || '',
-          category: data.category || '',
+          title: data.Title || '',
+          content: data.Content || '',
+          category: data.Category || '',
         });
       });
     }
@@ -51,7 +51,7 @@ export default function EditArticlePage() {
         </div>
 
         <div className="flex gap-4">
-          <button type="submit" onClick={(e) => handleSubmit(e, 'published')} className="bg-green-500 text-white px-4 py-2 rounded">Publish</button>
+          <button type="submit" onClick={(e) => handleSubmit(e, 'publish')} className="bg-green-500 text-white px-4 py-2 rounded">Publish</button>
           <button type="submit" onClick={(e) => handleSubmit(e, 'draft')} className="bg-yellow-500 text-white px-4 py-2 rounded">Save as Draft</button>
         </div>
       </form>

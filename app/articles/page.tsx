@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { fetchArticles, trashArticle } from '@/lib/api';
 import Link from 'next/link';
 
-const Tabs = ['published', 'draft', 'trashed'];
+const Tabs = ['publish', 'draft', 'trash'];
 
 export default function ArticlesPage() {
-  const [status, setStatus] = useState('published');
+  const [status, setStatus] = useState('publish');
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -15,14 +15,13 @@ export default function ArticlesPage() {
 
   const handleTrash = async (id: number) => {
     await trashArticle(id);
-    console.log("Tests")
+    setStatus("trash");
     const updated = await fetchArticles(status);
-    console.log("updated : ", updated)
     setArticles(updated);
   };
 
   return (
-    <div className="p-6">
+    <div>
       <h1 className="text-2xl font-bold mb-4">All Posts</h1>
       <div className="flex gap-4 mb-4">
         {Tabs.map((tab) => (
@@ -47,7 +46,7 @@ export default function ArticlesPage() {
               <td className="border px-4 py-2">{article.title}</td>
               <td className="border px-4 py-2">{article.category}</td>
               <td className="border px-4 py-2">
-                {status !== 'trashed' && (
+                {status !== 'trash' && (
                   <>
                     <Link href={`/articles/${article.id}/edit`} className="mr-2 text-blue-500">✏️</Link>
                     <button onClick={() => handleTrash(article.id)} className="text-red-500">🗑️</button>

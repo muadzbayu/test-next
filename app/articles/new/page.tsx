@@ -38,7 +38,7 @@ export default function NewArticlePage() {
         </div>
 
         <div className="flex gap-4">
-          <button type="submit" onClick={(e) => handleSubmit(e, 'published')} className="bg-blue-500 text-white px-4 py-2 rounded">Publish</button>
+          <button type="submit" onClick={(e) => handleSubmit(e, 'publish')} className="bg-blue-500 text-white px-4 py-2 rounded">Publish</button>
           <button type="submit" onClick={(e) => handleSubmit(e, 'draft')} className="bg-gray-400 text-white px-4 py-2 rounded">Save as Draft</button>
         </div>
       </form>
